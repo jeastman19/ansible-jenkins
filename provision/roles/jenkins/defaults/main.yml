@@ -1,0 +1,6 @@
+---
+jenkins_packages:
+  - jenkins
+
+jenkins_public_key_url: https://pkg.jenkins.io/debian/jenkins.io.key
+jenkins_repo_url: 'deb http://pkg.jenkins.io/debian-stable binary/'

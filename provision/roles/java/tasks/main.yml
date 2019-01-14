@@ -1,0 +1,21 @@
+---
+- name: Añadir URL repositorio Java
+  apt_repository: 
+    repo: 'ppa:webupd8team/java'
+    state: present
+    update_cache: yes
+
+- name: Aceptar la licencia Oracle
+  debconf:
+    name: "oracle-java8-installer"
+    question: "shared/accepted-oracle-license-v1-1"
+    value: "true"
+    vtype: "select"
+
+- name: Instalar los paquetes de Java
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items: "{{java_packages}}"
